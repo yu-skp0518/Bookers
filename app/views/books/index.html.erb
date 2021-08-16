@@ -1,6 +1,11 @@
 <body>
-  <p id="notice"></p>
-  <h1>Books</h1>
+  <div class="flash">
+    <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+  </div>
+
+  <h1><a href="/top" style="text-decoration:none;">Books</a></h1>
   <table>
 
     <thread>
@@ -16,9 +21,9 @@
         <tr>
           <td><span><%= book.title %></span></td>
           <td><span><%= book.body %></span></td>
-          <td><%= link_to "show", book_path(book.id) %></td>
-          <td><%= link_to "edit", book_path(book.id) %></td>
-          <td><%= link_to "destroy", book_path(book.id) %></td>
+          <td><%= link_to "Show", book_path(book.id) %></td>
+          <td><%= link_to "Edit", edit_book_path(book.id) %></td>
+          <td><%= link_to "Destroy", book_path(book.id),method: :delete  %></td>
         </tr>
         <% end %>
       </tbody>
@@ -26,12 +31,21 @@
   </table>
   <h2>New Book</h2>
     <%= form_with model:@book, local:true do |f| %>
-  <h4>タイトル</h4>
-    <%= f.text_field :title %>
 
-  <h4>本文</h4>
-    <%= f.text_area :body %>
+  <div class="field">
+    <label for="book_title">Title</label>
+      <%= f.text_field :title %>
+  </div>
 
-    <%= f.submit'Create Book' %>
+  <div class="field">
+    <label for="book_body">Body</label>
+      <%= f.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <div class="submit">
+      <%= f.submit'Create Book' %>
+    </div>
+  </div>
   <% end %>
 </body>

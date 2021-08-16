@@ -20,6 +20,15 @@
   box-sizing: border-box;
 }
 
+a {
+  color: black;
+}
+
+a:hover {
+    color: #fff;
+    background-color: #000;
+}
+
 body {
     background-color: #fff;
     color: #333;
@@ -70,4 +79,34 @@ th {
     vertical-align: inherit;
     font-weight: bold;
     text-align: -internal-center;
+}
+
+td {
+    padding-bottom: 7px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+label {
+    display: block;
+}
+
+label {
+    cursor: default;
+}
+
+div.field, div.actions {
+    margin-bottom: 10px;
+}
+
+div {
+    display: block;
+}
+
+.flash{
+	color: green
+}
+
+.notice {
+ margin-left: 33px;
 }

@@ -1,4 +1,18 @@
 <body>
-    <p>Title:<%= @book.title %></p>
-    <p>Body:<%= @book.body %></p>
+
+    <div class="flash">
+        <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+        <% end %>
+    </div>
+
+    <p><strong>Title:</strong><%= @book.title %></p>
+    <p><strong>Body:</strong><%= @book.body %></p>
+
+    <span>
+     <%= link_to "Edit", edit_book_path(@book.id) %>
+     |
+     <%= link_to "Back", books_path(@book.id) %>
+    </span>
+
 </body>

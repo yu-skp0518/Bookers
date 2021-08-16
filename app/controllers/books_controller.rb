@@ -19,15 +19,17 @@ class BooksController < ApplicationController
   end
 
   def update
-    post = Post.find(params[:id])
-    post.update(@post_params)
+    book = Book.find(params[:id])
+    book.update(book_params)
     redirect_to book_path(book.id)
+    flash[:notice] = "Book was successfully updated"
   end
 
   def destroy
     book = Book.find(params[:id])
     book.destroy
-    redirect_to books_new_path
+    redirect_to books_path
+    flash[:notice] = "Book was successfully destroyed"
   end
 
   private
